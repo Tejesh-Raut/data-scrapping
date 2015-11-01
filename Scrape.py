@@ -28,15 +28,16 @@ all_spans = driver.find_elements_by_class_name("activity-tile")
 i=0
 elem4 = driver.find_elements_by_class_name("tile-name")
 elem5 = driver.find_elements_by_class_name("tile-activity-duration")
-
+elem6 = driver.find_elements_by_class_name("tile-duration")
 elem7 = driver.find_elements_by_class_name("activityFromPrice")
 
 for span in all_spans:
 	print("Details: "+elem4[i].text)
 	print("Activity "+elem5[i].text)
-	elem6 = driver.find_element_by_class_name("tile-free-cancel")
-	print(elem6.text)
-	
+	if(len(elem6[i].find_elements_by_class_name("tile-freeCancellation")) > 0):
+		print ("Free cancellation")
+	else:
+		print ("No Free cancellation")
 	print("Price: "+elem7[i].text)
 	i = i+1
 	print('')
